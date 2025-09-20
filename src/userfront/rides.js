@@ -55,14 +55,14 @@ function Ride() {
       });
 
       socket.current.emit("getuser:data", user.current.rider);
-      socket.current.on("completed", (data) => {
-        if (data) setCheck(true);
-      });
-      socket.current.on("user:vaa", (data) => { 
+       socket.current.on("user:vaa", (data) => { 
         if(data){ 
         setRide(pre=>({...pre,...data}))
       }
     });
+      socket.current.on("completed", (data) => {
+        if (data) setCheck(true);
+      });
       socket.current.on("rate", (data) => {
         if (data.message === "success") navi("/home");
       });
