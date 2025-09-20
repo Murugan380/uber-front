@@ -35,7 +35,7 @@ function History() {
       navi("/driverlog");
     } else {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/ridedata`, {
+        .get("https://uber-a8pv.onrender.com/ridedata", {
           headers: { authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -51,7 +51,7 @@ function History() {
         .catch((err) => console.log(err));
 
       axios
-        .get(`${process.env.REACT_APP_API_URL}/driverdata`, {
+        .get("https://uber-a8pv.onrender.com/driverdata", {
           headers: { authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -66,7 +66,7 @@ function History() {
 
   function update() {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/driverd`, {
+      .get("https://uber-a8pv.onrender.com/driverd", {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -93,7 +93,7 @@ function History() {
       setConf(false);
     } else {
       axios
-        .post(`${process.env.REACT_APP_API_URL}/driverup`, users, {
+        .post("https://uber-a8pv.onrender.com/driverup", users, {
           headers: { authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -141,7 +141,7 @@ function History() {
                 <div className="col fw-bold">Work Location</div>
                 <div className="col">: {d.worklocation}</div>
               </div>
-              <div className="row mb-4">
+              <div className="row mb-2">
                 <div className="col fw-bold">Address</div>
                 <div className="col">: {d.address}</div>
               </div>
@@ -189,6 +189,7 @@ function History() {
 
             {ar ? (
               <>
+              {data.length>0?(<>
                 <hr />
                 <div className="row">
                   {data.map((x, i) => {
@@ -216,6 +217,7 @@ function History() {
                     );
                   })}
                 </div>
+                </>):(<>You not even go for a ride</>)}
               </>
             ) : null}
           </div>

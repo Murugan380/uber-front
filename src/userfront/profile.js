@@ -33,7 +33,7 @@ function History() {
       navi("/");
     } else {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/userdata`, {
+        .get("https://uber-a8pv.onrender.com/userdata", {
           headers: { authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -48,7 +48,7 @@ function History() {
 
   function update() {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/userd`, {
+      .get("https://uber-a8pv.onrender.com/userd", {
         headers: { authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -73,8 +73,7 @@ function History() {
       setCon("Invalid phone number");
       setConf(false);
     } else {
-      axios
-        .post(`${process.env.REACT_APP_API_URL}/userup`, users, {
+      axios.post("https://uber-a8pv.onrender.com/userup",users, {
           headers: { authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -90,7 +89,7 @@ function History() {
             alert("some times wents wrong");
           }
         })
-        .catch((err) => alert("Network error"));
+        .catch((err) =>{setConf(false); alert("Network error");});
     }
   }
 
@@ -167,6 +166,7 @@ function History() {
 
                 {ar && (
                   <>
+                  {data.length>0?(<>
                     <hr />
                     <div className="row">
                       {data.map((x, i) => {
@@ -216,6 +216,7 @@ function History() {
                         );
                       })}
                     </div>
+                 </> ):(<>You Not even ride any more</>)}
                   </>
                 )}
               </div>

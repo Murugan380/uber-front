@@ -11,6 +11,7 @@ function Forget(){
       const[checker,setChecker]=useState(false);
        const[forget,setFor]=useState(true);
        const [conf,setConf]=useState(false);
+       const[t,setT]=useState(false);
        const [otp,setOtp]=useState("");
        const[a,setA]=useState("");
         const[conpass,setConpass]=useState("");
@@ -24,7 +25,8 @@ console.log(emailput)
     setA("Invalid Email format");
   }
   else{
-    axios.post(`${process.env.REACT_APP_API_URL}/check`,emailput.current)
+    setT(true);
+    axios.post("https://uber-a8pv.onrender.com/check",emailput.current)
     .then(res=>{console.log(res);if(res.data.toLowerCase().includes("already")){
       const code=Math.floor(Math.random()*9000*1000);
             setOtp(code);
@@ -35,19 +37,22 @@ console.log(emailput)
             emailjs.send("Murugan@3800","template_xegfrfi",params,"zuRvOjZLYMi_CBmLs")
             .then(
         (response) => {
+            setT(false);
             setChecker(true);
             setConf(false);
           console.log("SUCCESS!", response.status, response.text);
         },
         (error) => {
+            setT(false)
           console.log("FAILED...", error);
         }
       );
     }
     else{
+        setT(false)
         setA("Invalid user");
     }
-}).catch(err=>console.log(err))
+}).catch(err=>{console.log(err);setT(false)})
   }
 }
 function otpcheck(){
@@ -70,8 +75,8 @@ function update(){
     }
     else{
         setConf(false);
-    axios.post(`${process.env.REACT_APP_API_URL}/passupdate`,emailput.current)
-    .then(res=>{console.log(res.data.message);setConf(true);if(res.data.message=="success"){navi('/')}else{
+    axios.post("https://uber-a8pv.onrender.com/passupdate",emailput.current)
+    .then(res=>{console.log(res.data.message);setConf(true);if(res.data.message=="success"){navi('/home')}else{
         setA(res.data.message);
     }})
     .catch(err=>{console.log(err)})
@@ -84,7 +89,7 @@ function update(){
        <div className="container mt-5">
             <input type="email"  name="email" onChange={(e)=>{emailput.current[e.target.name]=e.target.value;setA("")}} placeholder="Enter the Email"></input>
             <div style={{color:"red"}}>{a}</div>
-            <input type="button" className="btn btn-sm btn-outline-dark" onClick={forgetpass} value="Send OTP"></input>
+            <button type="button" className="btn btn-sm btn-outline-dark" onClick={forgetpass}>{t?"Sending..":"Send OTP"}</button>
       </div>
 
 

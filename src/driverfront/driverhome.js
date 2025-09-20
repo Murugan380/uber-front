@@ -45,7 +45,7 @@ function Driverhome(){
             alert("Token missing login again")
             navi('/driverlog')
         }
-        socketRef.current = io(process.env.REACT_APP_API_URL,
+        socketRef.current = io("https://uber-a8pv.onrender.com",
             {
                 auth:{
                     token:token

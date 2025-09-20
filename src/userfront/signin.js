@@ -14,6 +14,7 @@ function Sign(){
     const[email,setEmail]=useState("");
     const[phone,setPhone]=useState("");
     const [conf,setConf]=useState(false);
+    const [con,setCon]=useState(false);
     const[big,setBig]=useState(false);
     const[conpass,setConpass]=useState("");
     const[conotp,setConotp]=useState("");
@@ -24,32 +25,32 @@ function Sign(){
     }
         function sendotp(e){
             e.preventDefault();
-            setConf(true);
+            setCon(true);
             if(!val.current.name){
                 setConpass("Enter the name"); 
-                setConf(false);
+                setCon(false);
             }
         else if(!emailpart.test(val.current.email))
         {
             setEmail("Invalid email format");
-            setConf(false);
+            setCon(false);
         }
         else if(!(/^[6-9][0-9]{9}$/).test(val.current.phone)){
             setPhone("Invalid Phone number");
-            setConf(false);
+            setCon(false);
         }
         else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(val.current.pass))
         {
             setConpass("Password must have 8 digit and special charater");
-            setConf(false);
+            setCon(false);
         }
         else if(val.current.pass!=val.current.conf)
         {
             setConpass("Confirm as same as password");
-            setConf(false);
+            setCon(false);
         }
         else{
-            axios.post(`${process.env.REACT_APP_API_URL}/check`,val.current)
+            axios.post("https://uber-a8pv.onrender.com/check",val.current)
             .then(res=>{console.log(res);
         if(res.data=="ok"){
             setBig(true);
@@ -62,7 +63,7 @@ function Sign(){
             emailjs.send("Murugan@3800","template_xegfrfi",params,"zuRvOjZLYMi_CBmLs")
             .then(
         (response) => {
-            setConf(false);
+            setCon(false);
             setBig(false);
             setChecker(true);
           console.log("SUCCESS!", response.status, response.text);
@@ -73,7 +74,7 @@ function Sign(){
       );
     }
     else{
-        setConf(false);
+        setCon(false);
         setConpass(res.data);
     }
 }
@@ -87,12 +88,12 @@ function Sign(){
         console.log(newotp.current.value,otp);
         if(newotp.current.value==otp)
         {
-        axios.post(`${process.env.REACT_APP_API_URL}/signin`,val.current)
+        axios.post("https://uber-a8pv.onrender.com/signin",val.current)
         .then(res=>{setBig(false);console.log(res.data)
             if(res.data.message=="Inserted")
             {
             Cookies.set("tokenuser", res.data.token, { expires: 7, secure: true, sameSite: "strict" });
-            navi('/photo');
+            navi('/home');
             }
         else
             console.log(res.data);}).catch(err=>console.log(err))
@@ -107,7 +108,7 @@ function Sign(){
     return(
         <>
         <Nav></Nav>
-        {big?(<div className="d-flex justify-content-center align-item-center mt-5">
+        {big?(<div className="d-flex justify-content-center align-item-center m">
                 <div class="spinner-grow text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
                 </div>
@@ -169,7 +170,7 @@ function Sign(){
                          <div style={{color:"red"}} className="mt-3">{conotp}</div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal" onClick={(e)=>sendotp()}>{conf?"sending...":"Resend"}</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal" onClick={(e)=>sendotp()}>{con?"sending...":"Resend"}</button>
                         <button type="submit" class="btn btn-sm btn-outline-primary">{conf?"Submiting...":"Submit"}</button>
                     </div>
                 </form>

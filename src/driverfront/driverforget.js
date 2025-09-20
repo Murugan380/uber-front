@@ -10,18 +10,21 @@ function Forget(){
       const[checker,setChecker]=useState(false);
        const[forget,setFor]=useState(true);
        const [conf,setConf]=useState(false);
+       const [con,setCon]=useState(false);
        const [otp,setOtp]=useState("");
        const[a,setA]=useState("");
         const[conpass,setConpass]=useState("");
         const newotp=useRef("");
+        const[t,setT]=useState(false);
     function forgetpass(e){
   e.preventDefault();
-  setConf(true);
+  setCon(true);
   if(!/^[a-z0-9._%+-]+@gmail+\.com$/i.test(emailput.current.email)){
     setA("Invalid Email format");
   }
   else{
-    axios.post(`${process.env.REACT_APP_API_URL}/drivercheck`,emailput.current)
+    setT(true);
+    axios.post("https://uber-a8pv.onrender.com/drivercheck",emailput.current)
     .then(res=>{console.log(res);if(res.data.toLowerCase().includes("already")){
       const code=Math.floor(Math.random()*9000*1000);
             setOtp(code);
@@ -32,19 +35,23 @@ function Forget(){
             emailjs.send("Murugan@3800","template_xegfrfi",params,"zuRvOjZLYMi_CBmLs")
             .then(
         (response) => {
+            setT(false);
             setChecker(true);
-            setConf(false);
+            setCon(false);
           console.log("SUCCESS!", response.status, response.text);
         },
         (error) => {
+            setT(false);
+            setCon(false);
           console.log("FAILED...", error);
         }
       );
     }
     else{
+        setT(false);
         setA("Invalid user");
     }
-}).catch(err=>console.log(err))
+}).catch(err=>{console.log(err);setT(false)})
   }
 }
 function otpcheck(){
@@ -67,7 +74,7 @@ function update(){
     }
     else{
         setConf(false);
-    axios.post(`${process.env.REACT_APP_API_URL}/driverpassupdate`,emailput.current)
+    axios.post("https://uber-a8pv.onrender.com/driverpassupdate",emailput.current)
     .then(res=>{console.log(res.data.message);setConf(true);if(res.data.message=="success"){navi('/driverlog')}else{
         setA(res.data.message);
     }})
@@ -81,7 +88,7 @@ function update(){
        <div className="container mt-5">
             <input type="email"  name="email" onChange={(e)=>{emailput.current[e.target.name]=e.target.value;setA("")}} placeholder="Enter the Email"></input>
             <div style={{color:"red"}}>{a}</div>
-            <input type="button" className="btn btn-sm btn-outline-dark" onClick={forgetpass} value="Send OTP"></input>
+            <button className="btn btn-sm btn-outline-dark" onClick={forgetpass}>{t?"Sending...":"Send OTP"}</button>
       </div>
 
 
@@ -97,7 +104,7 @@ function update(){
                          <div style={{color:"red"}} className="mt-3">{conpass}</div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal" onClick={(e)=>forgetpass(e)}>{conf?"sending...":"Resend"}</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal" onClick={(e)=>forgetpass(e)}>{con?"sending...":"Resend"}</button>
                         <button type="button" onClick={(e)=>otpcheck()} class="btn btn-sm btn-outline-primary">{conf?"Submiting...":"Submit"}</button>
                     </div>
                 </form>

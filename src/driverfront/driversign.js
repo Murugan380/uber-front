@@ -13,6 +13,7 @@ function Sign(){
     const[email,setEmail]=useState("");
     const[phone,setPhone]=useState("");
     const [conf,setConf]=useState(false);
+    const [con,setCon]=useState(false);
     const[big,setBig]=useState(false);
     const[conpass,setConpass]=useState("");
     const[conotp,setConotp]=useState("");
@@ -24,32 +25,38 @@ function Sign(){
         function sendotp(e){
             e.preventDefault();
             setConf(true);
+            setCon(true);
          if(!emailpart.test(val.current.email))
         {
             setEmail("Invalid email format");
+            setCon(false);
             setConf(false);
         }
         else if(!(/^[6-9][0-9]{9}$/).test(val.current.phone)){
             setPhone("Invalid Phone number");
+            setCon(false);
             setConf(false);
         }
         else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(val.current.pass))
         {
             setConpass("Password must have 8 digit and special charater");
+            setCon(false);
             setConf(false);
         }
         else if(val.current.pass!=val.current.conf)
         {
             setConpass("Confirm as same as password");
+            setCon(false);
             setConf(false);
         }
         else if(!val.current.name || !val.current.worklocation || !val.current.address || !val.current.vehicaltype || !val.current.numberplate)
         {
             setConpass("Please fill all details");
+            setCon(false);
             setConf(false);
         }
         else{
-            axios.post(`${process.env.REACT_APP_API_URL}/drivercheck`,val.current)
+            axios.post("https://uber-a8pv.onrender.com/drivercheck",val.current)
             .then(res=>{console.log(res);
         if(res.data=="ok"){
             setBig(true);
@@ -62,6 +69,7 @@ function Sign(){
             emailjs.send("Murugan@3800","template_xegfrfi",params,"zuRvOjZLYMi_CBmLs")
             .then(
         (response) => {
+            setCon(false);
             setConf(false);
             setBig(false);
             setChecker(true);
@@ -73,19 +81,21 @@ function Sign(){
       );
     }
     else{
+        setCon(false);
         setConf(false);
         setConpass(res.data);
     }
 }
-).catch(err=>console.log("Error:",err))
+).catch(err=>{console.log("Error:",err); setCon(false);setConf(false);})
         }
         }
     function insert(e){
         setConf(true);
         e.preventDefault();
+        console.log(val.current);
         if(newotp.current.value==otp)
         {
-        axios.post(`${process.env.REACT_APP_API_URL}/driversignin`,val.current)
+        axios.post("https://uber-a8pv.onrender.com/driversignin",val.current)
         .then(res=>{setBig(false);console.log(res.data)
             if(res.data.message=="Inserted")
             {
@@ -93,7 +103,7 @@ function Sign(){
             navi('/driverhome');
             }
         else
-            setConpass(res.data);setChecker(false)}).catch(err=>console.log(err))
+            setConpass(res.data.message);setConf(false);setBig(false);setChecker(false)}).catch(err=>{console.log(err);setConf(false)})
         }
         else{
             setBig(false);
@@ -105,7 +115,7 @@ function Sign(){
     return(
         <>
         <Nav></Nav>
-        {big?(<div className="d-flex justify-content-center align-item-center mt-5">
+        {big?(<div className="d-flex justify-content-center align-item-center m">
                 <div class="spinner-grow text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
                 </div>
@@ -145,9 +155,9 @@ function Sign(){
 
                     <select name="vehicaltype" onChange={(e)=>{setvalue(e);setConpass("")}} className="form-select mb-3">
                         <option>Select the vehicals</option>
-                        <option>Bike</option>
-                        <option>Auto</option>
-                        <option>Car</option>
+                        <option value="bike">bike</option>
+                        <option value="auto">auto</option>
+                        <option value="car">car</option>
                     </select>
                   <input type="text" placeholder="Number plate" className="form-control mb-3 " name="numberplate" onChange={(e)=>{setvalue(e);setConpass("")}} required></input>
                    <input type="text" placeholder="Prefer location" className="form-control mb-3 " name="worklocation" onChange={(e)=>{setvalue(e);setConpass("")}} required></input>
@@ -177,7 +187,7 @@ function Sign(){
                          <div style={{color:"red"}} className="mt-3">{conotp}</div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal" onClick={(e)=>sendotp()}>{conf?"sending...":"Resend"}</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal" onClick={(e)=>sendotp()}>{con?"sending...":"Resend"}</button>
                         <button type="submit" class="btn btn-sm btn-outline-primary">{conf?"Submiting...":"Submit"}</button>
                     </div>
                 </form>

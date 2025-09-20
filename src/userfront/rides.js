@@ -37,7 +37,7 @@ function Ride() {
       alert("Token missing login again");
       navi("/");
     } else {
-      socket.current = io(process.env.REACT_APP_API_URL, {
+      socket.current = io("https://uber-a8pv.onrender.com", {
         auth: { token: token },
       });
 
@@ -112,7 +112,7 @@ else{
 
       {/* Ride Details */}
       {ride && (
-        <div className="container mar1">
+        <div className="container mar1 va">
           <div className="card shadow-lg border-0 rounded-4 ride-details-card">
             <div className="card-body">
               <h5 className="card-title text-center fw-bold mb-3">Ride Details</h5>

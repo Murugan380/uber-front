@@ -5,6 +5,7 @@ import {useState,useEffect,useRef} from 'react';
 import { io } from "socket.io-client";
 import emailjs from 'emailjs-com'
 import Navbar from './navbar'
+import '../userfront/rides.css'
 function Dride(){
     const navi=useNavigate();
     const socket=useRef();
@@ -41,7 +42,7 @@ function Dride(){
             navi('/driverlog');
         }
         else{
-        socket.current=io(process.env.REACT_APP_API_URL,{
+        socket.current=io("https://uber-a8pv.onrender.com",{
             auth:{
                 token:token
             }
@@ -118,7 +119,7 @@ function Dride(){
       {
         return(
         <>
-        <Navbar name={decode.name}></Navbar>
+        <Navbar name={decode?.name||""}></Navbar>
         <div className="no-ride d-flex flex-column justify-content-center align-items-center text-center">
           <h3 className="fw-bold mb-3">No rides yet!</h3>
           <p className="text-muted mb-4">
@@ -140,7 +141,7 @@ function Dride(){
         {ride?(
         <>
         <Navbar name={decode?.name||""}></Navbar>
-        <div className="container mar1">
+        <div className="container va">
             <div class="card  max-width">
                 <div class="card-body">
                     <h5 class="card-title ms-3 mb-2 text-center">Ride Details</h5>

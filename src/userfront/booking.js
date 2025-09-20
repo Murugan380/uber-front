@@ -231,7 +231,7 @@
             navi('/')
         }
         else{
-            socket.current = io(process.env.REACT_APP_API_URL,{
+            socket.current = io("https://uber-a8pv.onrender.com",{
                 auth:{
                     token:token
                 }
