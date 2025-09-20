@@ -43,6 +43,7 @@ function Ride() {
 
       socket.current.on("connect", () => {
         socket.current.emit("user:register", user.current.rider);
+         socket.current.emit("getuser:data", user.current.rider);
       });
 
       socket.current.on("connect_error", (err) => {
@@ -53,8 +54,6 @@ function Ride() {
           if (a) navi("/");
         }
       });
-
-      socket.current.emit("getuser:data", user.current.rider);
        socket.current.on("user:vaa", (data) => { 
         if(data){ 
         setRide(pre=>({...pre,...data}))
