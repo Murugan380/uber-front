@@ -1,0 +1,75 @@
+/* Navbar Base */
+.navbar {
+  background-color: #000 !important;
+  padding: 10px 20px;
+}
+
+/* Logo */
+.nav-logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Dropdown button */
+.btn-outline-dark {
+  border: none !important;
+  background: transparent !important;
+  color: #fff !important;
+  font-size: 1.2rem;
+}
+
+.btn-outline-dark:hover {
+  color: #ccc !important;
+}
+
+/* Dropdown menu */
+.custom-dropdown {
+  background-color: #000;
+  border: none;
+  min-width: 150px;
+}
+
+.custom-dropdown-item {
+  color: #fff !important;
+  padding: 10px 15px;
+  position: relative;
+  text-decoration: none;
+  background-color: transparent !important; /* ✅ remove Bootstrap hover bg */
+  border: none !important;
+}
+
+/* White underline on hover */
+.custom-dropdown-item:hover {
+  color: #fff !important;
+}
+
+.custom-dropdown-item:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: white;
+}
+
+/* Blue underline when active */
+.active-link {
+  color: #fff !important;
+  font-weight: bold;
+  position: relative;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: blue;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}

@@ -1,0 +1,100 @@
+/* Footer Base */
+.uber-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Footer Container */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Columns */
+.footer-col h2,
+.footer-col h3 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+/* App buttons */
+.app-buttons {
+  margin-top: 15px;
+}
+
+.app-buttons button {
+  display: block;
+  margin: 8px 0;
+  padding: 10px 14px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.app-buttons button:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Links */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+/* Socials */
+.footer-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.footer-socials a {
+  font-size: 18px;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #fff;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid #333;
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  padding: 15px;
+  margin-top: 30px;
+}

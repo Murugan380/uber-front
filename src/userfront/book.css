@@ -1,0 +1,107 @@
+/* General inputs */
+.form-control {
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Select box */
+.form-select {
+    border-radius: 0.5rem;
+    transition: 0.3s;
+}
+
+.form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Ride cards */
+.card.max-width {
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+}
+
+.card.max-width:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid #0d6efd;
+}
+
+.card.max-width.border-dark {
+    border: 2px solid #0d6efd !important;
+}
+
+.card-body h5 {
+    font-weight: 600;
+}
+
+.card-body p {
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn-outline-dark {
+    border-radius: 0.5rem;
+    transition: 0.3s;
+}
+
+.btn-outline-dark:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+/* Modal overlay */
+.modal.show.d-block {
+    backdrop-filter: blur(2px);
+}
+
+/* Error messages */
+.mb-3[style*="color:red"] {
+    font-size: 0.85rem;
+}
+
+/* Map container */
+.leaflet-container {
+    border-radius: 0.5rem;
+}
+
+/* Countdown ride start button */
+.btn-outline-primary {
+    width: 100%;
+    transition: 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* Cash on Delivery card */
+.card.border-dark.p-2 {
+    text-align: center;
+    font-weight: bold;
+    color: #0d6efd;
+    cursor: default;
+}
+.search-btn {
+    position: relative; /* or absolute if needed */
+    z-index: 1050;      /* higher than navbar */
+}
+.mab{
+    margin-top:100px;
+}
+
+/* Small tweaks for responsiveness */
+@media (max-width: 767px) {
+    .card.max-width {
+        margin-bottom: 1rem;
+    }
+}

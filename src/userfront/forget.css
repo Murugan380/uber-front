@@ -1,0 +1,49 @@
+.forget-page .btn {
+    margin-top: 10px;
+    padding: 8px 25px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.forget-page .btn-outline-dark {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+}
+
+.forget-page .btn-outline-dark:hover {
+    background-color: #495057 !important;
+    border-color: #495057 !important;
+}
+
+.forget-page .btn-outline-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #fff !important;
+}
+
+.forget-page .btn-outline-secondary:hover {
+    background-color: #5a6268 !important;
+    border-color: #5a6268 !important;
+}
+.forget-page input[type="email"],
+.forget-page input[type="password"],
+.forget-page input[type="number"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.forget-page input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+

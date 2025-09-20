@@ -2,21 +2,30 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import Navi from './comnav';
-import './btn.css'
-import './App.css'
-import ab0 from './userfront/ab0.png';
-import ab1 from './userfront/ab1.png'
-import ab2 from './userfront/ab2.png'
-import ab4 from './userfront/ab4.png';
-import ab5 from './userfront/ab5.png';
-import ab6 from './userfront/ab6.png'
-import abz from './userfront/abz.png'
-import Footer from './footer' 
+import Navi from './usernavbar';
+import ab0 from '../userfront/ab0.png';
+import ab1 from '../userfront/ab1.png'
+import ab2 from '../userfront/ab2.png'
+import ab4 from '../userfront/ab4.png';
+import ab5 from '../userfront/ab5.png';
+import abz from '../userfront/abz.png'
+import Footer from '../footer' 
 
 export default function RiderDriverButtons() {
   const [active, setActive] = useState("");
-    const navi=useNavigate();
+  const token = Cookies.get("tokenuser");
+      let decode;
+      const navi = useNavigate();
+   if (!token) {
+      navi("/");
+    } else {
+      try {
+        decode = jwtDecode(token);
+      } catch (err) {
+        console.error("Invalid token:", err.message);
+        navi("/");
+      }
+    }
   const ANIM_MS = 700;
 
   function nav(path, btn) {
@@ -26,28 +35,21 @@ export default function RiderDriverButtons() {
 
   return (
     <>
-    <Navi></Navi>
-    <div className="row container-fluid ma" id="home">
-      <div className="col-12 col-md-4 mb-md-0 mb-5">
-         <div className="d-flex flex-column align-items-center m">
-            {/* Rider Button */}
-                  <button
-              className={`role-btn ${active === "rider" ? "active" : ""}`}
-              onClick={() => nav("/userlog", "rider")}
-            >
-              <i className={`bi bi-sun ${active === "rider" ? "spin" : ""}`}></i>
-              <span>Rider</span>
-            </button>
+    <Navi name={decode?.name}></Navi>
+    <div className="row container-fluid mab" id="home">
+      <div className="col-12 col-md-4 mb-md-0 mb-5 mar3">
+        <h1>Welcome to Uber</h1>
+        <p>Uber is a global technology platform that connects riders with drivers, making transportation accessible at the tap of a button. Founded in 2009, Uber now operates in 10,000+ cities across 70+ countries, offering a variety of services such as:
 
-            {/* Driver Button */}
-            <button
-              className={`role-btn ${active === "driver" ? "active" : ""}`}
-              onClick={() => nav("/driverlog", "driver")}
-            >
-              <i className={`bi bi-sun ${active === "driver" ? "spin" : ""}`}></i>
-              <span>Driver</span>
-            </button>
-          </div>
+Rides – affordable, reliable trips with options ranging from bikes and autos to premium cars.
+
+Uber Rent – rent cars directly through the app in select cities.
+
+Uber Eats – food delivery from restaurants to your doorstep.
+
+Uber for Business – travel and delivery solutions for organizations.
+
+Uber’s mission is to create opportunities through movement—helping people get where they need to go and making cities more accessible.</p>
       </div>
       <div className="col-md-2 col-0"></div>
       <div className="col-md-6 col-12  p-md-5 mb-5 mb-md-0">
@@ -80,7 +82,7 @@ export default function RiderDriverButtons() {
         </div>
       </div>
 
-      <div className="row container-fluid">
+      <div className="row container-fluid summ ">
         <div className="col-md-6 col-12  mt-5 ms-0 ms-md-4">
           <h1>Working together to keep communities safe</h1>
           <p>Whether you’re in the back seat or behind the wheel, your safety is essential. We are committed to doing our part, and technology is at the heart of our approach. We partner with safety advocates and develop new technologies and systems to help improve safety and help make it easier for everyone to get around.</p><a href="#home">Learn More</a>
@@ -125,14 +127,14 @@ export default function RiderDriverButtons() {
         </div>
       </div>
 
-      <div className="container mt-5 mb-5">
+      <div className="container summ mb-5">
         <div className="row">
           <div className="col-md-6 mt-5">
             <h1 className="frt">Come reimagine with us</h1>
             <a className="btn btn-dark btn-lg mt-3 ms-3" href="#home">Join with Us</a>
           </div>
           <div className="col-md-6 mt-5 mt-md-0 d-flex justify-content-center">
-            <img src={ab6}></img>
+            <img src=""></img>
           </div>
         </div>
       </div>

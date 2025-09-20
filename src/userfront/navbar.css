@@ -1,0 +1,159 @@
+/* Top Navbar */
+.fixed-top {
+  background-color: #000 !important;
+  z-index: 1050;
+  padding: 10px 20px;
+}
+
+/* Logo */
+.fixed-top .fs-4 {
+  color: #fff;
+}
+
+/* Desktop nav links */
+.nav-link.custom-link {
+  color: #fff;
+  position: relative;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link.custom-link:hover {
+  text-decoration: none;
+}
+
+.nav-link.custom-link:hover::after,
+.dropdown-item.custom-dropdown-item:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* Active link */
+.active-link {
+  color: #1fbad6 !important;
+}
+
+/* Dropdown menu styling */
+.custom-dropdown {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.dropdown-item.custom-dropdown-item {
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.dropdown-item.custom-dropdown-item:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hamburger menu (mobile) */
+.btn.btn-dark.d-lg-none {
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
+}
+
+/* Sidebar (mobile) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #000;
+  z-index: 1060;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar .nav-link.custom-link {
+  color: #fff;
+  padding: 10px 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.sidebar .nav-link.custom-link:hover {
+  text-decoration: none;
+}
+
+.sidebar .nav-link.custom-link:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* Sidebar dropdown items */
+.sidebar .dropdown-item.custom-dropdown-item {
+  color: #fff;
+  padding: 8px 15px;
+}
+
+.sidebar .dropdown-item.custom-dropdown-item:hover {
+  text-decoration: underline;
+}
+
+/* Overlay for mobile sidebar */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1055;
+}
+
+/* Close button for sidebar */
+.sidebar .btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Adjustments for dropdown in sidebar bottom */
+.sidebar .dropdown.w-100 .dropdown-toggle {
+  text-align: left;
+  padding-left: 15px;
+}
+
+@media (max-width: 992px) {
+  /* Ensure desktop nav hidden */
+  .d-lg-flex {
+    display: none !important;
+  }
+  .d-lg-none {
+    display: block !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+  .overlay {
+    display: none;
+  }
+}

@@ -1,0 +1,105 @@
+.ride-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  background-color: #fff;
+  color: #000;
+  padding: 8px 25px;
+  font-weight: bold;
+  text-decoration: none;
+   border: 2px solid #000;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.ride-btn .arrow {
+  display: inline-block;
+  font-size:22px;
+  transition: transform 0.4s ease;
+  position: relative;
+  left: -10px; /* start slightly left */
+}
+
+.ride-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.ride-btn:hover .arrow {
+  transform: translateX(10px); /* slides right */
+}
+.mah{
+    margin-top:90px;
+}
+.t{
+    text-decoration:none;
+    color:#000
+}
+.rt{
+    margin-top:170px;
+}
+.max-widtht{
+    max-width:540px;
+}
+
+@media (max-width: 768px) {
+    .rt{
+    margin-top:20px;
+}
+}
+
+/* FAQ answer - hidden by default */
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 0; /* Remove padding when collapsed */
+}
+
+/* When open, allow content to expand */
+.answer.open {
+  max-height: 500px; /* Large enough to fit content */
+  padding: 10px 0; /* Add some padding when expanded */
+}
+
+/* Optional: rotate arrow */
+.btn i {
+  transition: transform 0.4s ease;
+}
+
+.btn i.bi-chevron-up {
+  transform: rotate(180deg);
+}
+
+
+/* Base card style */
+.t {
+  border: 2px solid gray;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none; /* remove underline for <a> */
+  color: inherit;
+}
+
+/* Hover effect */
+.t:hover {
+  color: black; /* text turns black */
+  border-color: rgb(59, 175, 221); /* border becomes blue */
+  animation: blink-border 2s infinite; /* blinking effect */
+}
+
+/* Blinking border keyframes */
+@keyframes blink-border {
+  0%   { border-color: #00000044; }
+  50%  { border-color: transparent; }
+  100% { border-color: rgb(0, 0, 0); }
+}
+
+/* Optional: smooth hover for nested text */
+.t .card-title,
+.t .card-text,
+.t small {
+  transition: color 0.3s ease;
+}
