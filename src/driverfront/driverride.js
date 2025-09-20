@@ -147,10 +147,10 @@ function Dride(){
                     <h5 class="card-title ms-3 mb-2 text-center">Ride Details</h5>
                     <hr></hr>
                     <div className="d-flex align-items-center mb-2 ms-3">
-                        <div className="fw-bold">Name  </div > <div> : {ride.friendname?ride.friendname:ride.rider.name}</div>
+                        <div className="fw-bold">Name  </div > <div> : {ride?.friendname ? ride.friendname : ride?.rider?.name || ""}</div>
                     </div>
                     <div className="d-flex align-items-center mb-2 ms-3">
-                        <div className="fw-bold">Phone </div > <div> : {ride.friendphone?ride.friendphone:ride.rider.phone}</div>
+                        <div className="fw-bold">Phone </div > <div> : {ride?.friendphone ? ride.friendphone : ride?.rider?.phone || ""}</div>
                     </div>
                     <div className="d-flex align-items-center mb-2 ms-3">
                         <div className="fw-bold">PickUp  </div > <div> : {ride.pickup}</div>
