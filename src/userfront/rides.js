@@ -66,11 +66,6 @@ function Ride() {
       socket.current.on("rate", (data) => {
         if (data.message === "success") navi("/home");
       });
-
-      return () => {
-        socket.current.disconnect();
-        console.log("Socket disconnected");
-      };
     }
   }, []);
 console.log("d2",ride);
