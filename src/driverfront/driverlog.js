@@ -31,7 +31,10 @@ function Driverlog() {
     axios.post("https://uber-a8pv.onrender.com/driverlogin",input.current)
     .then(res=>{console.log("Insert Result",res.data.message);
       if(res.data.message.toLowerCase().includes("invalid"))
+      {
+         setLa(false);
       setA(res.data.message);
+      }
     else
     {
       setLa(false);
