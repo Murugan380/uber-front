@@ -11,7 +11,7 @@ function Ride() {
   const navi = useNavigate();
   const token = Cookies.get("tokenuser");
   let decode;
-  const [ride, setRide] = useState({ driver: {} });
+  const [ride, setRide] = useState(null);
   const [checker, setCheck] = useState(false);
   const [conf, setConf] = useState(false);
   const con = useRef({});
@@ -56,6 +56,7 @@ function Ride() {
       });
        socket.current.on("user:vaa", (data) => { 
         if(data){ 
+          console.log("d1",data);
         setRide(pre=>({...pre,...data}))
       }
     });
@@ -72,7 +73,7 @@ function Ride() {
       };
     }
   }, []);
-
+console.log("d2",ride);
   function value(e) {
     con.current[e.target.name] = e.target.value;
   }
