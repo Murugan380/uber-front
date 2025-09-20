@@ -77,11 +77,6 @@ function Dride(){
                 navi('/driverhome');
             }
         });
-
-         return () => {
-        socket.current.disconnect(); // disconnect when component unmounts
-        console.log("Socket disconnected");
-    };
 }
     },[]);
 
