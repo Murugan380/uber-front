@@ -185,11 +185,11 @@ function History() {
                                 <hr />
                                 <p>
                                   <strong>Rider Name: </strong>
-                                  {x.friendname ? x.friendname : x.rider.name}
+                                  {x.friendname ? x.friendname : x.rider?.name||""}
                                 </p>
                                 <p>
                                   <strong>Rider Phone: </strong>
-                                  {x.friendphone ? x.friendphone : x.rider.phone}
+                                  {x.friendphone ? x.friendphone : x.rider?.phone||""}
                                 </p>
                                 <p>
                                   <strong>Driver Name: </strong> {x.driver.name}
