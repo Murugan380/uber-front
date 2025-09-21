@@ -39,14 +39,15 @@ function History() {
           headers: { authorization: `Bearer ${token}` },
         })
         .then((res) => {
-          setData(res.data);
-          console.log(res.data);
-           const total = res.data.reduce((acc, ride) => acc + (ride.fare || 0), 0);
-          setAmo(total);
           if (res.data.message == "invalid Token") {
             alert("invalid token");
             navi("/driverlog");
+            return;
           }
+          setData(res.data);
+          console.log(res.data);
+           const total = res.data.filter(ride => ride.status === "completed").reduce((acc, ride) => acc + (ride.fare || 0), 0);
+          setAmo(total);
         })
         .catch((err) => console.log(err));
 
