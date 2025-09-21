@@ -268,7 +268,7 @@
             }
         });
 
-        socket.current.on("ride:timecanceld",(data)=>{
+        socket.current.on("ride:timecancled",(data)=>{
             if(data.message=="cancled_success"){
                 setTime(false);
                 setCan(false);
