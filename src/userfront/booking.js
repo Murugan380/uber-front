@@ -294,6 +294,8 @@
         function canceltime(){
             socket.current.emit("ride:timecancel",value.current.rider);
             setTime(false);
+            setReq(false);
+            setCan(false);
         }
         function con(){
             socket.current.emit("ride:process",detail._id);
