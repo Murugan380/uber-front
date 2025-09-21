@@ -209,7 +209,7 @@ else {
                     <div className="col-md-6 mb-2">
                         <img src={m1} className="img-fluid " alt="Earnings" />
                     </div>
-                    <div className="col-md-6 ms-md-3 ms-0">
+                    <div className="col-md-6">
                         <h2>Earn on your own schedule</h2>
                         <p>Drive when you want, where you want. With Uber, you’re in control of your schedule and your earnings.</p>
                         <a className="btn btn-dark" href="/dprofile">View Earnings</a>
