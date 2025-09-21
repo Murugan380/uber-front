@@ -82,7 +82,7 @@ function Driverhome(){
         }
     })
     socketRef.current.on("ride:timecancled",(data)=>{
-        if(data.message=="timecancle"){
+        if(data){
             setAc(false);
             setApt(false)
             alert("Rided Cancled")
