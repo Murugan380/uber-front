@@ -52,7 +52,7 @@ function App() {
     <div className="login-page">
       <div className="login-container">
         <form>
-          <input type="text" name="email" placeholder="Email or Phone Number" class="form-control mb-3" onChange={(e)=>{chinput(e);setB("");setA("")}} required ></input>
+          <input type="text" name="email" placeholder="Enter your Email" class="form-control mb-3" onChange={(e)=>{chinput(e);setB("");setA("")}} required ></input>
           <div className="mb-2" style={{color:"red"}}>{b}</div>
           <input type="password" placeholder="Password" name="pass" class="form-control mb-3" onChange={(e)=>{chinput(e);setA("")}} required></input>
           <div className="my-2" style={{color:"red"}}>{a}</div>
