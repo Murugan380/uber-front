@@ -216,7 +216,7 @@ else {
                     </div>
                 </div>
 
-                <div className="row mb-5 align-items-center">
+                <div className="row container mb-5 align-items-center">
                     <div className="col-md-6 order-md-2">
                         <img src={m2} className="img-fluid" alt="Support" />
                     </div>
