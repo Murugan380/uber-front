@@ -67,7 +67,7 @@ function otpcheck(){
 }
 function update(){  
     if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(emailput.current.pass)){
-        setConpass("Password must have 8 characters")
+        setConpass("Password must be at least 8 characters, include uppercase, lowercase, number, and special character.")
     }
     else if(emailput.current.pass!=emailput.current.confpass)
     {
