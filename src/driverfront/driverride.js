@@ -48,9 +48,15 @@ function Dride(){
             }
         });
         socket.current.on('connect',()=>{
-            socket.current.emit("driver:register",{driverId:drivers.current.driver})
+            socket.current.emit("driver:register",{driverId:drivers.current.driver});
+             socket.current.emit("getdriver:data",drivers.current.driver);
         });
-
+ socket.current.on("driver:vaa",(data)=>{
+            if(data)
+            {
+            setRide(pre=>({...pre,...data}))
+            }
+        })
         socket.current.on("connect_error", (err) => {
                     console.error(" Socket connection failed:", err.message);
                      if(err.message=="xhr poll error"){
@@ -63,14 +69,6 @@ function Dride(){
                 }
                 });
 
-
-        socket.current.emit("getdriver:data",drivers.current.driver);
-        socket.current.on("driver:vaa",(data)=>{
-            if(data)
-            {
-            setRide(pre=>({...pre,...data}))
-            }
-        })
         socket.current.on("ride:completed",(data)=>{
             if(data.message=="completed"){
                 alert("Ride completed");
