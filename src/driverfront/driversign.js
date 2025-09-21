@@ -39,7 +39,7 @@ function Sign(){
         }
         else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(val.current.pass))
         {
-            setConpass("Password must have 8 digit and special charater");
+            setConpass("Password must be at least 8 characters, include uppercase, lowercase, number, and special character.");
             setCon(false);
             setConf(false);
         }
