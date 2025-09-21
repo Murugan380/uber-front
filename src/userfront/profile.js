@@ -192,10 +192,10 @@ function History() {
                                   {x.friendphone ? x.friendphone : x.rider?.phone||""}
                                 </p>
                                 <p>
-                                  <strong>Driver Name: </strong> {x.driver.name}
+                                  <strong>Driver Name: </strong> {x.driver?.name||""}
                                 </p>
                                 <p>
-                                  <strong>Vehicle: </strong> {x.driver.vehicaltype}
+                                  <strong>Vehicle: </strong> {x.driver?.vehicaltype||""}
                                 </p>
                                 <p>
                                   <strong>Pickup: </strong> {x.pickup}
