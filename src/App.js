@@ -16,7 +16,17 @@ import Footer from './footer'
 
 export default function RiderDriverButtons() {
   const [active, setActive] = useState("");
-    const navi=useNavigate();
+  const navi=useNavigate();
+   useEffect(() => {
+    const token1 = Cookies.get("tokenuser");
+    const token2 = Cookies.get("tokendriver");
+
+    if (token1) {
+      navi("/home");
+    } else if (token2) {
+      navi("/driverhome");
+    }
+  }, [navi]);
   const ANIM_MS = 700;
 
   function nav(path, btn) {
