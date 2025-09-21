@@ -168,7 +168,7 @@ function Dride(){
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Enter the OTP Sent to {ride.rider.email}</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Enter the OTP Sent to {ride.rider?.email||" "}</h5>
                 </div>
                     <div class="modal-body">
                         <input type="number" className="form-control" onChange={(e)=>{setNew(e.target.value);setErr("")}}></input>
