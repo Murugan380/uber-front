@@ -118,7 +118,7 @@ function History() {
   } else {
     return (
       <>
-        <Navbar name={decode?.name}></Navbar>
+        <Navbar name={decode?.name||""}></Navbar>
         <div className="container m">
           {/* Profile Card */}
           <div className="card shadow-lg border-0 rounded-4 p-3 profile-card">
@@ -219,7 +219,7 @@ function History() {
                 </div>
                 </>):(<>You not even go for a ride</>)}
               </>
-            ) : null}
+            ) : ""}
           </div>
 
           {/* Update Modal */}
